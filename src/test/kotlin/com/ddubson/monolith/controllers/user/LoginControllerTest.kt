@@ -1,20 +1,19 @@
 package com.ddubson.monolith.controllers.user
 
-import org.jetbrains.spek.api.Spek
-import org.jetbrains.spek.api.dsl.given
-import org.jetbrains.spek.api.dsl.it
-import org.jetbrains.spek.api.dsl.on
 import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.platform.runner.JUnitPlatform
-import org.junit.runner.RunWith
+import org.spekframework.spek2.Spek
+import org.spekframework.spek2.style.gherkin.Feature
 
-@RunWith(JUnitPlatform::class)
-class LoginControllerTest: Spek({
-    given("") {
-        on("") {
-            it(" ") {
-                assertEquals(2, 1)
-            }
-        }
+object LoginControllerTest: Spek({
+    Feature("Login") {
+       Scenario("login successfully") {
+           When("I enter my username") {
+
+           }
+
+           Then("I should login successfully") {
+                assertEquals(2,3)
+           }
+       }
     }
 })
