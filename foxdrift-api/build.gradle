@@ -6,6 +6,7 @@ plugins {
 
 dependencies {
     implementation project(":foxdrift-model")
+    implementation project(":foxdrift-kernel")
     implementation "com.fasterxml.jackson.module:jackson-module-kotlin:2.9.+"
     implementation "org.springframework.boot:spring-boot-starter-web"
 }

@@ -1,4 +1,9 @@
 rootProject.name = 'modular-monolith-reference-architecture'
 
+// Core
+include 'foxdrift-kernel'
 include 'foxdrift-model'
+
+// Clients
+include 'foxdrift-cli'
 include 'foxdrift-api'
