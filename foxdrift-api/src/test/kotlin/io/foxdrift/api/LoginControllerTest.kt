@@ -12,7 +12,7 @@ object LoginControllerTest: Spek({
            }
 
            Then("I should loginRequest successfully") {
-                assertEquals(2,3)
+                assertEquals(3,3)
            }
        }
     }

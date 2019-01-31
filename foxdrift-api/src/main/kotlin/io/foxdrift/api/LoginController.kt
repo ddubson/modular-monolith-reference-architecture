@@ -1,6 +1,6 @@
 package io.foxdrift.api
 
-import io.foxdrift.api.request.LoginRequest
+import io.foxdrift.api.request.WebLoginRequest
 import io.foxdrift.api.usecase.LoginUseCase
 import io.foxdrift.kernel.AccessDeniedLoginResponse
 import io.foxdrift.kernel.SuccessfulLoginResponse
@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 class LoginController(val loginUseCase: LoginUseCase) {
     @PostMapping("/")
-    fun login(@RequestBody loginRequest: LoginRequest): ResponseEntity<*> {
-        return loginUseCase.act(loginRequest)
+    fun login(@RequestBody webLoginRequest: WebLoginRequest): ResponseEntity<*> {
+        return loginUseCase.act(webLoginRequest)
                 .mapLoginSuccess { loginResponse: SuccessfulLoginResponse ->
                     ResponseEntity.ok(loginResponse)
                 }
