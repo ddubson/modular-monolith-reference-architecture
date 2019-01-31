@@ -1,4 +1,5 @@
 package io.foxdrift.kernel
 
-class LoginRequest {
+data class LoginRequest(val username: String,
+                        val password: String) {
 }

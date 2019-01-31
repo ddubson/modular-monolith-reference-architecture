@@ -11,8 +11,13 @@ import org.springframework.web.bind.annotation.RestController
 class LoginController(val loginUseCase: LoginUseCase) {
     @PostMapping("/")
     fun login(@RequestBody loginRequest: LoginRequest): ResponseEntity<*> {
-        return loginUseCase.act(loginRequest,
-                { ResponseEntity.ok(it) },
-                { ResponseEntity.badRequest().body(it) })
+        return loginUseCase.act(loginRequest)
+                .mapLoginSuccess<ResponseEntity<*>> { loginResponse ->
+
+                }
+                .mapLoginDenied<ResponseEntity<*>> { loginResponse ->
+
+                }
+
     }
 }

@@ -1,27 +1,25 @@
 package io.foxdrift.api.usecase
 
 import io.foxdrift.api.request.LoginRequest
+import io.foxdrift.kernel.LoginResponse
 import io.foxdrift.kernel.UserSessionManager
 import io.foxdrift.model.User
-import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Component
 
 @Component
 class LoginUseCase(private val userSessionManager: UserSessionManager) {
     fun act(loginRequest: LoginRequest,
-            onSuccess: (User) -> ResponseEntity<*>,
-            onValidateFail: (String) -> ResponseEntity<*>) {
+            onSuccess: (User) -> LoginResponse,
+            onValidateFail: (String) -> LoginResponse): LoginUseCaseResponseSpec {
         if (loginRequest.username.isNullOrBlank()) {
-            onValidateFail.invoke("Username invalid")
-            return
+            return onValidateFail.invoke("Username invalid")
         }
 
         if (loginRequest.password.isNullOrBlank()) {
-            onValidateFail.invoke("Password invalid")
-            return
+            return onValidateFail.invoke("Password invalid")
         }
 
-        userSessionManager
+        return userSessionManager
                 .loginRequest(loginRequest.username, loginRequest.password)
                 .onLoggedIn { sessionKey ->
                     onSuccess.invoke(User("hello", "world"))
